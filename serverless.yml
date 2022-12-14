@@ -1,6 +1,6 @@
 org: azad123
-app: todo-app-project-serverless
-service: todo-app-project-serverless
+app: aws-node-http-api-project
+service: aws-node-http-api-project
 frameworkVersion: '3'
 
 provider:
