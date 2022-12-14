@@ -1,6 +1,6 @@
 org: azad123
-app: todo-app-project-serverless
-service: todo-app-project-serverless
+app: aws-node-http-api-project
+service: aws-node-http-api-project
 frameworkVersion: '3'
 
 provider:
@@ -12,7 +12,7 @@ provider:
       Action:
         - dynamodb:*
       Resource:
-        - arn:aws:dynamodb:us-east-1:535201705982:table/Worktodo
+        - arn:aws:dynamodb:us-east-1:535201705982:table/KaamKaro
 
 functions:
   hello:
@@ -21,31 +21,31 @@ functions:
       - httpApi:
           path: /
           method: get
-  insertapi:
-    handler: src/insertapi.handler
+  kaamBharo:
+    handler: src/kaamBharo.handler
     events:
       - httpApi:
-          path: /Work
+          path: /kaam
           method: post
-  showapi:
-    handler: src/showapi.handler
+  kaamDikhao:
+    handler: src/kaamDikhao.handler
     events:
       - httpApi:
-          path: /Work
+          path: /kaam
           method: get
-  completeapi:
-    handler: src/completeapi.handler
+  kaamKhatamKaro:
+    handler: src/kaamKhatamKaro.handler
     events:
       - httpApi:
-          path: /Work/{id}
+          path: /kaam/{id}
           method: put
 
 resources:
   Resources:
-    Worktodo:
+    KaamKaro:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: Worktodo
+        TableName: KaamKaro
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: id
@@ -53,4 +53,3 @@ resources:
         KeySchema:
           - AttributeName: id
             KeyType: HASH
-
