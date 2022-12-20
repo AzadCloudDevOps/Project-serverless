@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/AzadCloudDevOps/project-serverless#readme",
   "dependencies": {
-    "aws-sdk": "^2.1267.0",
+    "aws-sdk": "^2.1278.0",
     "uuid": "^9.0.0"
   }
 }

@@ -45,7 +45,7 @@ resources:
     todowork:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName:todowork
+        TableName: todowork
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: id
