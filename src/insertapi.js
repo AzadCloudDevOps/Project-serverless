@@ -2,30 +2,30 @@
 const { v4 } = require("uuid");
 const AWS = require("aws-sdk");
 
-const kaamBharo = async (event) => {
+const insertapi = async (event) => {
 
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-  const { kaam } = JSON.parse(event.body);
+  const { work } = JSON.parse(event.body);
   const createdAt = new Date().toISOString();
   const id = v4();
-  const newKaam = {
+  const newwork = {
     id,
-    kaam,
+    work,
     createdAt,
     completed: false
   }
   await dynamoDb.put({
-    TableName: "KaamKaro",
-    Item: newKaam
+    TableName: "todowork",
+    Item: newwork
   }).promise();
 
   return {
     statusCode: 200,
-    body: JSON.stringify(newKaam),
+    body: JSON.stringify(newwork),
     };
 };
 
 module.exports = {
-    handler: kaamBharo,
+    handler: insertapi,
 };

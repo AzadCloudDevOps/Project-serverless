@@ -12,7 +12,7 @@ provider:
       Action:
         - dynamodb:*
       Resource:
-        - arn:aws:dynamodb:us-east-1:535201705982:table/KaamKaro
+        - arn:aws:dynamodb:us-east-1:535201705982:table/todowork
 
 functions:
   hello:
@@ -21,31 +21,31 @@ functions:
       - httpApi:
           path: /
           method: get
-  kaamBharo:
-    handler: src/kaamBharo.handler
+  insertapi:
+    handler: src/insertapi.handler
     events:
       - httpApi:
-          path: /kaam
+          path: /work
           method: post
-  kaamDikhao:
-    handler: src/kaamDikhao.handler
+  showapi:
+    handler: src/showapi.handler
     events:
       - httpApi:
-          path: /kaam
+          path: /work
           method: get
-  kaamKhatamKaro:
-    handler: src/kaamKhatamKaro.handler
+  completeapi:
+    handler: src/completeapi.handler
     events:
       - httpApi:
-          path: /kaam/{id}
+          path: /work/{id}
           method: put
 
 resources:
   Resources:
-    KaamKaro:
+    todowork:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: KaamKaro
+        TableName:todowork
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: id

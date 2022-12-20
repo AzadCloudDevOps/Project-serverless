@@ -2,26 +2,26 @@
 const { v4 } = require("uuid");
 const AWS = require("aws-sdk");
 
-const kaamDikhao = async (event) => {
+const showapi = async (event) => {
 
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
-  let kaam;
+  let work;
 
   try{
   const result = await dynamoDb.scan({
-    TableName: "KaamKaro"
+    TableName: "todowork"
   }).promise();
-  kaam = result.Items;
+  work = result.Items;
   }catch(err){
     console.log(err);
   }
   
   return {
     statusCode: 200,
-    body: JSON.stringify(kaam),
+    body: JSON.stringify(work),
     };
 };
 
 module.exports = {
-    handler: kaamDikhao,
+    handler: showapi,
 };

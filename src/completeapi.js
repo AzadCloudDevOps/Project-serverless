@@ -1,7 +1,7 @@
 "use strict";
 const AWS = require("aws-sdk");
 
-const kaamKhatamkaro = async (event) => {
+const completeapi = async (event) => {
 
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
@@ -9,7 +9,7 @@ const kaamKhatamkaro = async (event) => {
   const { id } = event.pathParameters;
 
   await dynamoDb.update({
-    TableName: "KaamKaro",
+    TableName: "todowork",
     Key: { id },
     UpdateExpression: "set completed = :completed",
     ExpressionAttributeValues: {":completed": completed},
@@ -18,10 +18,10 @@ const kaamKhatamkaro = async (event) => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({msg:"Kaam Khatam Kar Diya"}),
+    body: JSON.stringify({msg:"work done completed"}),
     };
 };
 
 module.exports = {
-    handler: kaamKhatamkaro,
+    handler: completeapi,
 };
